@@ -1,4 +1,7 @@
 " Description: Keymaps
+"
+" Prettify json format
+nmap =j :%! jq --indent 4 .<CR>
 
 nnoremap <S-C-p> "0p
 " Delete without yank
