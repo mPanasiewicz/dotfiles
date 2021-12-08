@@ -24,6 +24,7 @@ set laststatus=2
 set scrolloff=10
 set expandtab
 "let loaded_matchparen = 1
+let g:ruby_host_prog = '/Users/maciej.panasiewicz/.frum/versions/3.0.3/bin/neovim-ruby-host'
 set shell=zsh
 set backupskip=/tmp/*,/private/tmp/*
 
