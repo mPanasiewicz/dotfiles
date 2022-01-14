@@ -93,6 +93,12 @@ nvim_lsp.flow.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.terraformls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = nvim_lsp.util.root_pattern(".terraform", "_terraform", ".git")
+}
+
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },

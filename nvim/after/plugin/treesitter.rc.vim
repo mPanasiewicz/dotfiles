@@ -23,7 +23,9 @@ require'nvim-treesitter.configs'.setup {
     "html",
     "css",
     "ruby",
-    "scss"
+    "scss",
+    "hcl",
+    "toml"
   },
 }
 
