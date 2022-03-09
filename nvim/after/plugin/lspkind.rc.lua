@@ -4,8 +4,8 @@ if (not status) then return end
 lspkind.init({
   -- enables text annotations
   --
+  mode = 'symbol_text',
   -- default: true
-  with_text = true,
 
   -- default symbol map
   -- can be either 'default' (requires nerd-fonts font) or
