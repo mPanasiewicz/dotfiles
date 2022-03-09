@@ -86,6 +86,10 @@ if &term =~ "screen"
   autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
   autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
 endif
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+set textwidth=120
+set colorcolumn=+1
+hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 "}}}
 
