@@ -30,6 +30,7 @@ if has("nvim")
   Plug 'onsails/lspkind-nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'ruifm/gitlinker.nvim'
   Plug 'nvim-telescope/telescope.nvim'
 endif
 Plug 'groenewege/vim-less', { 'for': 'less' }
