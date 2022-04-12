@@ -125,6 +125,9 @@ if has("unix")
     runtime ./macos.vim
   endif
 endif
+if has('win32')
+  runtime ./windows.vim
+endif
 
 runtime ./maps.vim
 "}}}
