@@ -15,34 +15,17 @@ local conditions = {
   end,
 }
 
--- ######## NOT USED #######
-local colors = {
-  bg       = '#202328',
-  fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
-  white    = '#ffffff',
-}
--- #########################
-
 lualine.setup {
   options = {
     icons_enabled = true,
     theme = 'solarized_dark',
-    section_separators = {left = '', right = ''},
-    component_separators = {left = '', right = ''},
+    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
     disabled_filetypes = {}
   },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch'},
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch' },
     lualine_c = {
       {
         'filename',
@@ -73,7 +56,7 @@ lualine.setup {
       }
     },
     lualine_x = {
-      { 'diagnostics', sources = {"nvim_diagnostic"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
+      { 'diagnostics', sources = { "nvim_diagnostic" }, symbols = { error = ' ', warn = ' ', info = ' ', hint = ' '} },
       { 'o:encoding', -- option component same as &encoding in viml
         fmt = string.upper, -- I'm not sure why it's upper case either ;)
         cond = conditions.hide_in_width },
@@ -86,15 +69,15 @@ lualine.setup {
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {{
+    lualine_c = { {
       'filename',
       file_status = true, -- displays file status (readonly status, modified status)
       path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
-    }},
-    lualine_x = {'location'},
+    } },
+    lualine_x = { 'location' },
     lualine_y = {},
     lualine_z = {}
   },
   tabline = {},
-  extensions = {'fugitive'}
+  extensions = { 'fugitive' }
 }
