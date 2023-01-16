@@ -1,17 +1,15 @@
-require('base')
-require('highlights')
-require('maps')
-require('plugins')
+require('maciejpanasiewicz.base')
+require('maciejpanasiewicz.highlights')
+require('maciejpanasiewicz.maps')
+require('maciejpanasiewicz.plugins')
 
-local has = function(x)
-  return vim.fn.has(x) == 1
-end
+local has = vim.fn.has
 local is_mac = has "macunix"
 local is_win = has "win32"
 
 if is_mac then
-  require('macos')
+  require('maciejpanasiewicz.macos')
 end
 if is_win then
-  require('windows')
+  require('maciejpanasiewicz.windows')
 end

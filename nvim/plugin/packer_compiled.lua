@@ -199,11 +199,6 @@ _G.packer_plugins = {
     path = "/Users/maciej.panasiewicz/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["prettier.nvim"] = {
-    loaded = true,
-    path = "/Users/maciej.panasiewicz/.local/share/nvim/site/pack/packer/start/prettier.nvim",
-    url = "https://github.com/MunifTanjim/prettier.nvim"
-  },
   tabular = {
     loaded = true,
     path = "/Users/maciej.panasiewicz/.local/share/nvim/site/pack/packer/start/tabular",
