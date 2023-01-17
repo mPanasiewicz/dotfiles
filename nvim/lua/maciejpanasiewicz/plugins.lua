@@ -24,13 +24,22 @@ packer.startup(function(use)
   use 'williamboman/mason-lspconfig.nvim'
 
   -- use 'glepnir/lspsaga.nvim' -- LSP UIs
+  -- use({
+  --   "glepnir/lspsaga.nvim",
+  --   branch = "main",
+  --   config = function()
+  --     require('lspsaga').setup({})
+  --   end,
+  -- })
+
   use({
-    "glepnir/lspsaga.nvim",
+    'glepnir/lspsaga.nvim',
     branch = "main",
+    event = 'BufRead',
     config = function()
       require('lspsaga').setup({})
-    end,
-  })
+    end
+  }) -- LSP UIs
   use 'L3MON4D3/LuaSnip'
   use {
     'nvim-treesitter/nvim-treesitter',
