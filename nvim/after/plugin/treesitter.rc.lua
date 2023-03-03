@@ -12,6 +12,7 @@ ts.setup {
   },
   ensure_installed = {
     "markdown",
+    "markdown_inline",
     "tsx",
     "fish",
     "php",
@@ -22,6 +23,7 @@ ts.setup {
     "css",
     "ruby",
     "scss",
+    "sql",
     "hcl",
     "toml",
     "lua"
