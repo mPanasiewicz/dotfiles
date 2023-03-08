@@ -44,3 +44,8 @@ keymap.set('n', '<C-w><left>', '<C-w><')
 keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
+
+-- Markdown Preview
+keymap.set('n', '<C-s>', ':MarkdownPreview<Return>')
+keymap.set('n', '<M-s>', ':MarkdownPreviewStop<Return>')
+keymap.set('n', '<C-p>', ':MarkdownPreviewToggle<Return>')
