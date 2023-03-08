@@ -59,4 +59,5 @@ packer.startup(function(use)
   use 'tpope/vim-bundler'
   use 'tpope/vim-rails'
   use 'godlygeek/tabular'
+  use 'vim-test/vim-test'
 end)
