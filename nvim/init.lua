@@ -1,3 +1,4 @@
+require 'impatient'
 require('maciejpanasiewicz.base')
 require('maciejpanasiewicz.highlights')
 require('maciejpanasiewicz.maps')
