@@ -30,41 +30,52 @@ lualine.setup {
       {
         'filename',
         file_status = true, -- displays file status (readonly status, modified status)
-        path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
+        path = 1            -- 0 = just filename, 1 = relative path, 2 = absolute path
       }, {
-           function()
-             return '%='
-           end,
-      }, {
-           -- Lsp server name .
-           function()
-             local msg = 'No Active Lsp'
-             local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-             local clients = vim.lsp.get_active_clients()
-             if next(clients) == nil then
-               return msg
-             end
-             for _, client in ipairs(clients) do
-               local filetypes = client.config.filetypes
-               if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                 return client.name
-               end
-             end
-             return msg
-           end,
-           icon = ' LSP:'
-      }
+      function()
+        return '%='
+      end,
+    }, {
+      -- Lsp server name .
+      function()
+        local msg = 'No Active Lsp'
+        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+        local clients = vim.lsp.get_active_clients()
+        if next(clients) == nil then
+          return msg
+        end
+        for _, client in ipairs(clients) do
+          local filetypes = client.config.filetypes
+          if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+            return client.name
+          end
+        end
+        return msg
+      end,
+      icon = ' LSP:'
+    }
     },
     lualine_x = {
-      { 'diagnostics', sources = { "nvim_diagnostic" }, symbols = { error = ' ', warn = ' ', info = ' ', hint = ' '} },
-      { 'o:encoding', -- option component same as &encoding in viml
+      {
+        'diagnostics',
+        sources = { "nvim_diagnostic" },
+        symbols = {
+          error = ' ',
+          warn = ' ',
+          info = ' ',
+          hint = ' '
+        }
+      },
+      {
+        'o:encoding',       -- option component same as &encoding in viml
         fmt = string.upper, -- I'm not sure why it's upper case either ;)
-        cond = conditions.hide_in_width },
+        cond = conditions.hide_in_width
+      },
       'filetype'
 
     },
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
   },
   inactive_sections = {
     lualine_a = {},
@@ -72,7 +83,7 @@ lualine.setup {
     lualine_c = { {
       'filename',
       file_status = true, -- displays file status (readonly status, modified status)
-      path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
+      path = 1            -- 0 = just filename, 1 = relative path, 2 = absolute path
     } },
     lualine_x = { 'location' },
     lualine_y = {},
