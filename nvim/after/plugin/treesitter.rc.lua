@@ -25,6 +25,7 @@ ts.setup {
     "scss",
     "sql",
     "hcl",
+    "terraform",
     "toml",
     "lua"
   },
