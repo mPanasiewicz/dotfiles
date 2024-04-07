@@ -24,7 +24,7 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
 
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
+  use 'nvimdev/lspsaga.nvim' -- LSP UIs
   use 'L3MON4D3/LuaSnip'
   use { 'saadparwaiz1/cmp_luasnip' }
   use "rafamadriz/friendly-snippets"
