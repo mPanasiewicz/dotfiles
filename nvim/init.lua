@@ -4,17 +4,14 @@ require('maciejpanasiewicz.highlights')
 require('maciejpanasiewicz.maps')
 require('maciejpanasiewicz.plugins')
 
-local has = vim.fn.has
-local is_mac = has "macunix"
-local is_win = has "win32"
-local is_linux = has "unix"
+local os = vim.loop.os_uname().sysname
 
-if is_mac then
+if os == "Darwin" then
   require('maciejpanasiewicz.macos')
-end
-if is_win then
-  require('maciejpanasiewicz.windows')
-end
-if is_linux == 1 then
+elseif os == "Linux" then
   require('maciejpanasiewicz.linux')
+elseif os == "Windows_NT" then
+  require('maciejpanasiewicz.windows')
+else
+  error("Unknown OS")
 end
