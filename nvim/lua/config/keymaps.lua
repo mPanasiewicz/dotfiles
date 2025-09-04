@@ -70,3 +70,10 @@ end)
 keymap.set("n", "<leader>i", function()
 	require("mpanasiewicz.lsp").toggleInlayHints()
 end)
+
+-- Lazydocker
+if vim.fn.executable("lazydocker") == 1 then
+  keymap.set("n", "<leader>gd", function()
+    LazyVim.terminal("lazydocker", { esc_esc = false, ctrl_hjkl = false })
+  end, { desc = "Lazydocker" })
+end
