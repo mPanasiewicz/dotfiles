@@ -27,6 +27,22 @@ return {
           if client.server_capabilities.documentFormattingProvider then
             vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
           end
+          
+          -- Hide Solargraph caching messages
+          local original_handler = vim.lsp.handlers["$/progress"]
+          vim.lsp.handlers["$/progress"] = function(_, result, ctx)
+            local lsp_client = vim.lsp.get_client_by_id(ctx.client_id)
+            if lsp_client and lsp_client.name == "solargraph" then
+              if result.value and result.value.message and 
+                 result.value.message:match("Caching gem") then
+                return -- Hide caching messages
+              end
+            end
+            -- Let other LSP progress messages show normally
+            if original_handler then
+              original_handler(_, result, ctx)
+            end
+          end
         end,
       }
       
