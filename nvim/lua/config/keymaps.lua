@@ -58,17 +58,16 @@ keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
--- Diagnostics
-keymap.set("n", "<C-j>", function()
-	vim.diagnostic.goto_next()
-end, opts)
+vim.api.nvim_create_user_command("ToggleAutoformat", function()
+  require("mpanasiewicz.lsp").toggleAutoformat()
+end, {})
 
 keymap.set("n", "<leader>r", function()
-	require("mpanasiewicz.hsl").replaceHexWithHSL()
+  require("mpanasiewicz.hsl").replaceHexWithHSL()
 end)
 
 keymap.set("n", "<leader>i", function()
-	require("mpanasiewicz.lsp").toggleInlayHints()
+  require("mpanasiewicz.lsp").toggleInlayHints()
 end)
 
 -- Lazydocker

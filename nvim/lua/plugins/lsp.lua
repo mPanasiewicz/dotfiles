@@ -1,9 +1,8 @@
 return {
   -- tools
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
-      opts.PATH = "prepend"
       vim.list_extend(opts.ensure_installed, {
         "stylua",
         "selene",
@@ -13,8 +12,7 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
-        "erb-formatter",
-        "erb-lint",
+        "ruby-lsp",
       })
     end,
   },
@@ -22,18 +20,6 @@ return {
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
-    init = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = {
-        "gd",
-        function()
-          -- DO NOT RESUSE WINDOW
-          require("telescope.builtin").lsp_definitions({ reuse_win = false })
-        end,
-        desc = "Goto Definition",
-        has = "definition",
-      }
-    end,
     opts = {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
@@ -147,8 +133,66 @@ return {
             },
           },
         },
+        ruby_lsp = {
+          init_options = {
+            enabledFeatures = {
+              "documentSymbols",
+              "foldingRanges",
+              "selectionRanges",
+              "semanticHighlighting",
+              "formatting",
+              "codeActions",
+              "diagnostics",
+              "hover",
+              "completion",
+            },
+            experimentalFeaturesEnabled = false,
+            featuresConfiguration = {
+              inlayHint = {
+                enableAll = false,
+              },
+            },
+          },
+          settings = {
+            rubyLsp = {
+              rubyVersionManager = "auto",
+              formatter = "auto",
+              linters = {},
+            },
+          },
+          on_attach = function(client, bufnr)
+            -- Disable specific capabilities that cause issues
+            client.server_capabilities.workspaceSymbolProvider = false
+        end,
       },
-      setup = {},
     },
+  },
+      setup = {
+        ruby_lsp = function(_, opts)
+          -- Disable Rails addon which causes the environment errors
+          local ruby_lsp = require("lspconfig").ruby_lsp
+          ruby_lsp.setup(vim.tbl_deep_extend("force", opts, {
+            cmd = { "ruby-lsp", "--disable-addons" },
+          }))
+          return true
+        end,
+      },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      vim.list_extend(keys, {
+        {
+          "gd",
+          function()
+            -- DO NOT RESUSE WINDOW
+            require("telescope.builtin").lsp_definitions({ reuse_win = false })
+          end,
+          desc = "Goto Definition",
+          has = "definition",
+        },
+      })
+    end,
   },
 }

@@ -1,9 +1,7 @@
 if vim.loader then
   vim.loader.enable()
 end
--- TODO:
--- FIXME:
--- NOTE:
+
 _G.dd = function(...)
   require("util.debug").dump(...)
 end

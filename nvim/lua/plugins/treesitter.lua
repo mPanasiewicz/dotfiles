@@ -37,6 +37,7 @@ return {
         "javascript",
         "diff",
         "terraform",
+        "vim", -- Added to fix query issues
       },
 
       -- matchup = {
@@ -70,7 +71,7 @@ return {
       },
     },
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      require("nvim-treesitter").setup(opts)
 
       -- MDX
       vim.filetype.add({
