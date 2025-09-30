@@ -133,49 +133,9 @@ return {
             },
           },
         },
-        ruby_lsp = {
-          init_options = {
-            enabledFeatures = {
-              "documentSymbols",
-              "foldingRanges",
-              "selectionRanges",
-              "semanticHighlighting",
-              "formatting",
-              "codeActions",
-              "diagnostics",
-              "hover",
-              "completion",
-            },
-            experimentalFeaturesEnabled = false,
-            featuresConfiguration = {
-              inlayHint = {
-                enableAll = false,
-              },
-            },
-          },
-          settings = {
-            rubyLsp = {
-              rubyVersionManager = "auto",
-              formatter = "auto",
-              linters = {},
-            },
-          },
-          on_attach = function(client, bufnr)
-            -- Disable specific capabilities that cause issues
-            client.server_capabilities.workspaceSymbolProvider = false
-        end,
       },
     },
-  },
       setup = {
-        ruby_lsp = function(_, opts)
-          -- Disable Rails addon which causes the environment errors
-          local ruby_lsp = require("lspconfig").ruby_lsp
-          ruby_lsp.setup(vim.tbl_deep_extend("force", opts, {
-            cmd = { "ruby-lsp", "--disable-addons" },
-          }))
-          return true
-        end,
       },
   },
   {
