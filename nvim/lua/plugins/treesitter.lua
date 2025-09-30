@@ -40,6 +40,25 @@ return {
         "vim", -- Added to fix query issues
       },
 
+      -- Enhanced highlighting for Ruby
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { "ruby" },
+        disable = function(lang, buf)
+          local max_filesize = 100 * 1024 -- 100 KB
+          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+          if ok and stats and stats.size > max_filesize then
+            return true
+          end
+        end,
+      },
+
+      -- Better indentation for Ruby
+      indent = {
+        enable = true,
+        disable = {},
+      },
+
       -- matchup = {
       -- 	enable = true,
       -- },
@@ -72,6 +91,14 @@ return {
     },
     config = function(_, opts)
       require("nvim-treesitter").setup(opts)
+      
+      -- Force ensure Ruby parser is properly installed
+      vim.defer_fn(function()
+        local has_parser = pcall(require, "nvim-treesitter.parsers")
+        if has_parser then
+          vim.cmd("TSInstall! ruby")
+        end
+      end, 100)
 
       -- MDX
       vim.filetype.add({
