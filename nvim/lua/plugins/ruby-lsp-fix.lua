@@ -26,19 +26,20 @@ return {
         end,
       }
       
-      -- Disable solargraph completely
+      -- Disable other Ruby LSPs completely
       opts.servers.solargraph = false
+      opts.servers.rubocop = false  -- Disable RuboCop LSP
     end,
   },
   
-  -- Add Mason configuration for Ruby tools
+  -- Remove Mason RuboCop configuration to avoid dependency issues
   {
     "mason-org/mason.nvim",
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, {
         "ruby-lsp",
-        "rubocop",    -- Ruby linter/formatter (optional)
+        -- Remove rubocop to avoid gem dependency conflicts
       })
     end,
   },
