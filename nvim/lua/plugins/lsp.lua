@@ -12,7 +12,7 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
-        "ruby-lsp",
+        -- ruby-lsp managed manually in ruby-lsp-fix.lua
       })
     end,
   },
