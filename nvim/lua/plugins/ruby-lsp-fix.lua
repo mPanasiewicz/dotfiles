@@ -66,6 +66,7 @@ return {
             "diagnostics",
             "hover",
             "completion",
+            "definition",
           },
           experimentalFeaturesEnabled = false,
         },
