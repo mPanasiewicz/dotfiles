@@ -45,12 +45,13 @@ return {
     end,
   },
 
-  -- copilot chat with Claude Sonnet model
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    opts = {
-      model = "claude-sonnet-4",
-      temperature = 0.1,
-    },
-  },
+  -- Copilot Disabled. Using ClaudeCode
+  -- -- copilot chat with Claude Sonnet model
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   opts = {
+  --     model = "claude-sonnet-4",
+  --     temperature = 0.1,
+  --   },
+  -- },
 }
